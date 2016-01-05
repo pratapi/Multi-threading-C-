@@ -1,0 +1,23 @@
+// Multithreading in C++
+#include <thread>
+using namespace std;
+
+typedef void(*g)( );
+
+void callFromThread()
+{
+    printf_s("Hello World");
+}
+
+int main()
+{
+    g func = &callFromThread;
+    thread t1(func); // t1 running
+   // t1.join(); // main threads wait for t1 to finish
+   
+    t1.detach(); // t1 will freely on its own -- daemon process
+
+
+
+    return 0;
+} 
